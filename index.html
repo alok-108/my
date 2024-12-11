@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alok Pandey | Front-End Developer</title>
+
+    <!-- Linking external stylesheets and libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li {
+            font-size: 1.2rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FF5733;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://www.example.com/your-hero-image.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: #FF5733;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #fff;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .hero .cta {
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            background-color: #FF5733;
+            border: none;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hero .cta:hover {
+            background-color: #FF3B00;
+            transform: scale(1.05);
+        }
+
+        /* My Work Section */
+        .my-work {
+            padding: 50px 20px;
+            background-color: #222;
+            text-align: center;
+        }
+
+        .my-work h2 {
+            font-size: 2.5rem;
+            color: #FF5733;
+            margin-bottom: 40px;
+        }
+
+        .my-work .work-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .my-work .work-item {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            max-width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .my-work .work-item:hover {
+            background-color: #FF5733;
+            transform: scale(1.05);
+        }
+
+        .my-work .work-item h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .my-work .work-item p {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .my-work .work-item a {
+            color: #FF5733;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .my-work .work-item a:hover {
+            color: #fff;
+        }
+
+        /* Social Media Section */
+        .social-media {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #222;
+        }
+
+        .social-media h2 {
+            font-size: 2.5rem;
+            color: #FF5733;
+            margin-bottom: 20px;
+        }
+
+        .social-media .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-media .social-links a {
+            color: #fff;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-media .social-links a:hover {
+            color: #FF5733;
+            transform: scale(1.1);
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #222;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #FF5733;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .my-work .work-items {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .my-work .work-item {
+                width: 90%;
+            }
+
+            .social-media .social-links a {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#work">My Work</a></li>
+            <li><a href="#social-media">Social Media</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Alok Pandey</h1>
+        <p>
+            Comparative Religious Scholar | Meditation Instructor | Yogi | Spiritual Philosophy Expert <br>
+            Ancient History Scholar | Astrophysics Enthusiast | Creative Front-End Developer | Web Enthusiast | Project Builder | ML & Deep Learning Intern
+        </p>
+        <button class="cta">View My Work</button>
+    </section>
+
+    <!-- My Work Section -->
+    <section class="my-work" id="work">
+        <h2>My Work</h2>
+        <div class="work-items">
+            <div class="work-item">
+                <h3>SAARTHI</h3>
+                <p>An intelligent assistant app for managing daily tasks, available on the Google Play Store.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.our.saarthi&hl=en-US&pli=1" target="_blank">View on Play Store</a>
+            </div>
+
+            <div class="work-item">
+                <h3>LMWE</h3>
+                <p>A comprehensive management tool for logistics and warehouse executives, available on the Google Play Store.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.ewml&hl=en-US" target="_blank">View on Play Store</a>
+            </div>
+
+            <div class="work-item">
+                <h3>GitHub: AI-Based Team Productivity Tracker</h3>
+                <p>Initial AI work to track team productivity with AI-based insights. Explore on GitHub.</p>
+                <a href="https://github.com/alok-108/AI-Based-Team-Productivity-Tracker" target="_blank">View on GitHub</a>
+            </div>
+
+            <div class="work-item">
+                <h3>GitHub: Image Inpainting</h3>
+                <p>Initial AI work focused on image inpainting using advanced deep learning models. Explore on GitHub.</p>
+                <a href="https://github.com/alok-108/IMAGE-IMPAINTING" target="_blank">View on GitHub</a>
+            </div>
+
+            <div class="work-item">
+                <h3>CodePen: Schizophrenia Detection Games</h3>
+                <p>Interactive game-based approach to detect schizophrenia using visual tasks. Check it out on CodePen.</p>
+                <a href="https://codepen.io/alok-123456789/pen/KKjzvOE" target="_blank">View on CodePen</a>
+            </div>
+
+            <div class="work-item">
+                <h3>CodePen: 3D Lotus Animation</h3>
+                <p>A beautiful 3D lotus animation created using HTML, CSS, and JavaScript. Explore on CodePen.</p>
+                <a href="https://codepen.io/alok-123456789/pen/KKjrbOG" target="_blank">View on CodePen</a>
+            </div>
+
+            <div class="work-item">
+                <h3>CodePen: Reinforcement Learning Game Simulation</h3>
+                <p>A simulation of a reinforcement learning game that adapts over time. Check it out on CodePen.</p>
+                <a href="https://codepen.io/alok-123456789/pen/Wbewgxx" target="_blank">View on CodePen</a>
+            </div>
+
+            <div class="work-item">
+                <h3>CodePen: Real-Time MobileNet Object Classification</h3>
+                <p>Real-time object classification using MobileNet model with webcam input. View the demo on CodePen.</p>
+                <a href="https://codepen.io/alok-123456789/pen/emOZLMr" target="_blank">View on CodePen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media" id="social-media">
+        <h2>Connect With Me</h2>
+        <div class="social-links">
+            <a href="https://codepen.io/alok-123456789" target="_blank" title="My CodePen">CodePen</a>
+            <a href="https://github.com/alok-108" target="_blank" title="My GitHub">GitHub</a>
+            <a href="mailto:valok8592@gmail.com" title="Email Me">Email</a>
+            <a href="https://www.youtube.com/@_alok_vyas_" target="_blank" title="My YouTube Channel">YouTube</a>
+            <a href="https://www.instagram.com/alokpandey.io" target="_blank" title="Instagram Profile">Instagram</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Designed & Developed by Alok Pandey. All rights reserved.</p>
+        <p>Crafted by Alok Pandey | <a href="https://www.linkedin.com/in/alok-pandey-b473b2261/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Connect on LinkedIn</a></p>
+    </footer>
+
+</body>
+</html>
