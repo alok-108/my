@@ -3,346 +3,818 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alok Pandey | Front-End Developer</title>
-
-    <!-- Linking external stylesheets and libraries -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
+    <title>Alok Pandey | AI/ML Visionary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #111;
-            color: #fff;
-            overflow-x: hidden;
-            height: 100%;
+        :root {
+            --primary: #00ff88;
+            --secondary: #0066ff;
+            --accent: #ff0066;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: rgba(20, 20, 20, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        /* Navigation Bar */
-        nav {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(255, 0, 102, 0.1) 0%, transparent 50%);
+            animation: bgPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glassmorphic Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 10px 30px;
             z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            justify-content: center;
+            list-style: none;
             gap: 30px;
-        }
-
-        nav ul li {
-            font-size: 1.2rem;
+            align-items: center;
         }
 
         nav ul li a {
-            color: #fff;
+            color: var(--text-primary);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
-        nav ul li a:hover {
-            color: #FF5733;
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
         }
 
-        /* Hero Section */
+        /* Hero Section with 3D Elements */
         .hero {
-            background: url('https://www.example.com/your-hero-image.jpg') no-repeat center center;
-            background-size: cover;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            height: 100vh;
             text-align: center;
-            padding: 20px;
-            opacity: 0.9;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            transform-style: preserve-3d;
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
         }
 
         .hero h1 {
-            font-size: 5rem;
-            color: #FF5733;
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            animation: fadeIn 2s ease-out;
+            text-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+            animation: textGlow 3s ease-in-out infinite alternate;
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        @keyframes textGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.2); }
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
             margin-bottom: 40px;
-            color: #fff;
-            opacity: 0.8;
-            font-weight: 400;
+            font-weight: 300;
+            line-height: 1.4;
         }
 
-        .hero .cta {
-            font-size: 1.5rem;
-            padding: 15px 30px;
-            background-color: #FF5733;
-            border: none;
-            cursor: pointer;
-            color: white;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
+        .hero .tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: typewriter 4s steps(50) 2s forwards;
         }
 
-        .hero .cta:hover {
-            background-color: #FF3B00;
-            transform: scale(1.05);
+        @keyframes typewriter {
+            0% { width: 0; opacity: 1; }
+            100% { width: 100%; opacity: 1; }
         }
 
-        /* My Work Section */
-        .my-work {
-            padding: 50px 20px;
-            background-color: #222;
-            text-align: center;
-        }
-
-        .my-work h2 {
-            font-size: 2.5rem;
-            color: #FF5733;
-            margin-bottom: 40px;
-        }
-
-        .my-work .work-items {
+        /* Advanced CTA Buttons */
+        .cta-group {
             display: flex;
-            flex-wrap: wrap;
+            gap: 20px;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        .my-work .work-item {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            width: 280px;
-            max-width: 100%;
-            transition: all 0.3s ease;
+        .cta-btn {
+            position: relative;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
             cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.4);
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Advanced Section Styling */
+        section {
+            padding: 120px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* About Section with Cards */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
             overflow: hidden;
         }
 
-        .my-work .work-item:hover {
-            background-color: #FF5733;
-            transform: scale(1.05);
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
         }
 
-        .my-work .work-item h3 {
-            font-size: 1.8rem;
-            color: #fff;
-            margin-bottom: 10px;
+        .about-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .my-work .work-item p {
-            font-size: 1rem;
-            color: #aaa;
-            margin-bottom: 10px;
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
         }
 
-        .my-work .work-item a {
-            color: #FF5733;
+        .highlight {
+            color: var(--primary);
             font-weight: 600;
+        }
+
+        /* Advanced Work Grid */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .work-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .work-card:hover::before {
+            left: 100%;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .work-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .work-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .work-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .my-work .work-item a:hover {
-            color: #fff;
+        .work-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
         }
 
         /* Social Media Section */
-        .social-media {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #222;
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
-        .social-media h2 {
+        .social-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: var(--glass-bg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon {
             font-size: 2.5rem;
-            color: #FF5733;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
             margin-bottom: 20px;
         }
 
-        .social-media .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .social-media .social-links a {
-            color: #fff;
-            font-size: 2rem;
+        .footer-link {
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .social-media .social-links a:hover {
-            color: #FF5733;
-            transform: scale(1.1);
+        .footer-link:hover {
+            color: var(--secondary);
         }
 
-        /* Footer Section */
-        footer {
-            background-color: #222;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 1001;
+            transition: width 0.1s ease;
         }
 
-        footer p {
-            font-size: 1rem;
-            color: #aaa;
-        }
-
-        footer a {
-            text-decoration: none;
-            color: #FF5733;
-            font-weight: 600;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Media Queries for Responsiveness */
-        @media screen and (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav {
+                padding: 8px 20px;
+                top: 10px;
             }
 
-            .hero p {
-                font-size: 1rem;
+            nav ul {
+                gap: 15px;
             }
 
-            .my-work .work-items {
+            nav ul li a {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .hero-content {
+                padding: 0 15px;
+            }
+
+            .cta-group {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .my-work .work-item {
-                width: 90%;
+            .about-grid,
+            .work-grid,
+            .social-grid {
+                grid-template-columns: 1fr;
             }
 
-            .social-media .social-links a {
-                font-size: 1.5rem;
+            section {
+                padding: 80px 15px;
             }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--glass-border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-
 <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
 
-    <!-- Navigation Bar -->
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#social-media">Social Media</a></li>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#work" class="nav-link">Work</a></li>
+            <li><a href="#social" class="nav-link">Connect</a></li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>Alok Pandey</h1>
-        <p>
-            Comparative Religious Scholar | Meditation Instructor | Yogi | Spiritual Philosophy Expert <br>
-            Ancient History Scholar | Astrophysics Enthusiast | Creative Front-End Developer | Web Enthusiast | Project Builder | ML & Deep Learning Intern
-        </p>
-        <button class="cta">View My Work</button>
+        <div class="hero-content">
+            <h1>ALOK PANDEY</h1>
+            <p class="subtitle">AI/ML Visionary • IIT Patna • International Conference Presenter</p>
+            <div class="tagline">Building the future with artificial intelligence</div>
+            <div class="cta-group">
+                <button class="cta-btn cta-primary" onclick="scrollToSection('work')">Explore My Work</button>
+                <a href="mailto:valok8592@gmail.com" class="cta-btn cta-secondary">Get In Touch</a>
+            </div>
+        </div>
     </section>
 
-    <!-- My Work Section -->
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-text">
+                    I'm <span class="highlight">Alok Pandey</span>, an IIT alumnus and AI/ML Engineer passionate about pushing the boundaries of artificial intelligence. At a remarkably young age during my Bachelor's, I had the privilege of presenting groundbreaking research at an <span class="highlight">International Conference</span> in the AI Medical Domain.
+                </div>
+            </div>
+            <div class="about-card">
+                <div class="about-text">
+                    My expertise spans <span class="highlight">AI optimization</span> (quantization, pruning), <span class="highlight">computer vision for healthcare</span>, and <span class="highlight">intelligent FinTech solutions</span>. I bridge the gap between cutting-edge research and real-world applications, creating systems that make a meaningful impact.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
     <section class="my-work" id="work">
-        <h2>My Work</h2>
-        <div class="work-items">
-            <div class="work-item">
+        <h2 class="section-title">My Work</h2>
+        <div class="work-grid">
+            <div class="work-card">
                 <h3>SAARTHI</h3>
-                <p>An intelligent assistant app for managing daily tasks, available on the Google Play Store.</p>
-                <a href="https://play.google.com/store/apps/details?id=com.our.saarthi&hl=en-US&pli=1" target="_blank">View on Play Store</a>
+                <p>An intelligent assistant app that revolutionizes daily task management with AI-powered insights and automation.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.our.saarthi&hl=en-US&pli=1" target="_blank" class="work-link">
+                    View on Play Store →
+                </a>
             </div>
 
-            <div class="work-item">
+            <div class="work-card">
                 <h3>LMWE</h3>
-                <p>A comprehensive management tool for logistics and warehouse executives, available on the Google Play Store.</p>
-                <a href="https://play.google.com/store/apps/details?id=com.ewml&hl=en-US" target="_blank">View on Play Store</a>
+                <p>Comprehensive logistics and warehouse management platform optimizing operations for maximum efficiency.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.ewml&hl=en-US" target="_blank" class="work-link">
+                    View on Play Store →
+                </a>
             </div>
 
-            <div class="work-item">
-                <h3>GitHub: AI-Based Team Productivity Tracker</h3>
-                <p>Initial AI work to track team productivity with AI-based insights. Explore on GitHub.</p>
-                <a href="https://github.com/alok-108/AI-Based-Team-Productivity-Tracker" target="_blank">View on GitHub</a>
+            <div class="work-card">
+                <h3>AI Team Productivity Tracker</h3>
+                <p>Advanced AI system that analyzes team dynamics and provides actionable insights for productivity enhancement.</p>
+                <a href="https://github.com/alok-108/AI-Based-Team-Productivity-Tracker" target="_blank" class="work-link">
+                    Explore on GitHub →
+                </a>
             </div>
 
-            <div class="work-item">
-                <h3>GitHub: Image Inpainting</h3>
-                <p>Initial AI work focused on image inpainting using advanced deep learning models. Explore on GitHub.</p>
-                <a href="https://github.com/alok-108/IMAGE-IMPAINTING" target="_blank">View on GitHub</a>
+            <div class="work-card">
+                <h3>Image Inpainting Research</h3>
+                <p>Cutting-edge deep learning research focused on advanced image restoration and inpainting techniques.</p>
+                <a href="https://github.com/alok-108/IMAGE-IMPAINTING" target="_blank" class="work-link">
+                    View Research →
+                </a>
             </div>
 
-            <div class="work-item">
-                <h3>CodePen: Schizophrenia Detection Games</h3>
-                <p>Interactive game-based approach to detect schizophrenia using visual tasks. Check it out on CodePen.</p>
-                <a href="https://codepen.io/alok-123456789/pen/KKjzvOE" target="_blank">View on CodePen</a>
+            <div class="work-card">
+                <h3>Schizophrenia Detection Games</h3>
+                <p>Revolutionary game-based approach using visual cognitive tasks for early schizophrenia detection.</p>
+                <a href="https://codepen.io/alok-123456789/pen/KKjzvOE" target="_blank" class="work-link">
+                    Experience Demo →
+                </a>
             </div>
 
-            <div class="work-item">
-                <h3>CodePen: 3D Lotus Animation</h3>
-                <p>A beautiful 3D lotus animation created using HTML, CSS, and JavaScript. Explore on CodePen.</p>
-                <a href="https://codepen.io/alok-123456789/pen/KKjrbOG" target="_blank">View on CodePen</a>
-            </div>
-
-            <div class="work-item">
-                <h3>CodePen: Reinforcement Learning Game Simulation</h3>
-                <p>A simulation of a reinforcement learning game that adapts over time. Check it out on CodePen.</p>
-                <a href="https://codepen.io/alok-123456789/pen/Wbewgxx" target="_blank">View on CodePen</a>
-            </div>
-
-            <div class="work-item">
-                <h3>CodePen: Real-Time MobileNet Object Classification</h3>
-                <p>Real-time object classification using MobileNet model with webcam input. View the demo on CodePen.</p>
-                <a href="https://codepen.io/alok-123456789/pen/emOZLMr" target="_blank">View on CodePen</a>
+            <div class="work-card">
+                <h3>MobileNet Object Classification</h3>
+                <p>Real-time AI classification system leveraging MobileNet architecture for instant object recognition.</p>
+                <a href="https://codepen.io/alok-123456789/pen/emOZLMr" target="_blank" class="work-link">
+                    Try Live Demo →
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Social Media Section -->
-    <section class="social-media" id="social-media">
-        <h2>Connect With Me</h2>
-        <div class="social-links">
-            <a href="https://codepen.io/alok-123456789" target="_blank" title="My CodePen">CodePen</a>
-            <a href="https://github.com/alok-108" target="_blank" title="My GitHub">GitHub</a>
-            <a href="mailto:valok8592@gmail.com" title="Email Me">Email</a>
-            <a href="https://www.youtube.com/@_alok_vyas_" target="_blank" title="My YouTube Channel">YouTube</a>
-            <a href="https://www.instagram.com/alokpandey.io" target="_blank" title="Instagram Profile">Instagram</a>
+    <section class="social-media" id="social">
+        <h2 class="section-title">Connect With Me</h2>
+        <div class="social-grid">
+            <a href="https://github.com/alok-108" target="_blank" class="social-card">
+                <div class="social-icon">⚡</div>
+                <h3>GitHub</h3>
+            </a>
+            <a href="https://codepen.io/alok-123456789" target="_blank" class="social-card">
+                <div class="social-icon">🎨</div>
+                <h3>CodePen</h3>
+            </a>
+            <a href="mailto:valok8592@gmail.com" class="social-card">
+                <div class="social-icon">📧</div>
+                <h3>Email</h3>
+            </a>
+            <a href="https://www.youtube.com/@_alok_vyas_" target="_blank" class="social-card">
+                <div class="social-icon">🎥</div>
+                <h3>YouTube</h3>
+            </a>
+            <a href="https://www.instagram.com/alokpandey.ai" target="_blank" class="social-card">
+                <div class="social-icon">📸</div>
+                <h3>Instagram</h3>
+            </a>
+            <a href="https://www.linkedin.com/in/alok-pandey-b473b2261/" target="_blank" class="social-card">
+                <div class="social-icon">💼</div>
+                <h3>LinkedIn</h3>
+            </a>
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <p>Designed & Developed by Alok Pandey. All rights reserved.</p>
-        <p>Crafted by Alok Pandey | <a href="https://www.linkedin.com/in/alok-pandey-b473b2261/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Connect on LinkedIn</a></p>
+        <div class="footer-content">
+            <p class="footer-text">Designed & Developed with ❤️ by Alok Pandey</p>
+            <p class="footer-text">
+                © 2025 All rights reserved • 
+                <a href="https://www.linkedin.com/in/alok-pandey-b473b2261/" target="_blank" class="footer-link">
+                    Connect on LinkedIn
+                </a>
+            </p>
+        </div>
     </footer>
-<script>
-    // When the button is clicked
-    document.querySelector('.hero .cta').onclick = function() {
-        // Scroll to the "My Work" section smoothly
-        document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
-    };
-</script>
 
+    <script>
+        // Enhanced Loading Experience
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Floating Particles Animation
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00ff88', '#0066ff', '#ff0066'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Scroll Indicator
+        function updateScrollIndicator() {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollIndicator.style.width = scrollPercent + '%';
+        }
+
+        // Smooth Scroll Function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navigation Active State
+        function updateActiveNavigation() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const correspondingLink = document.querySelector(`a[href="#${section.id}"]`);
+                    if (correspondingLink) correspondingLink.classList.add('active');
+                }
+            });
+        }
+
+        // Mouse Parallax Effect
+        document.addEventListener('mousemove', function(e) {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const bgAnimation = document.querySelector('.bg-animation');
+            const heroContent = document.querySelector('.hero-content');
+            
+            if (bgAnimation) {
+                bgAnimation.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+            }
+            
+            if (heroContent && window.scrollY < window.innerHeight) {
+                heroContent.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px)`;
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations for cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.about-card, .work-card, .social-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(card);
+            });
+        });
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', createParticles);
+        window.addEventListener('scroll', updateScrollIndicator);
+        window.addEventListener('scroll', updateActiveNavigation);
+
+        // Navigation Click Handlers
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Performance Optimization
+        let ticking = false;
+        function updateOnScroll() {
+            updateScrollIndicator();
+            updateActiveNavigation();
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        });
+    </script>
 </body>
 </html>
